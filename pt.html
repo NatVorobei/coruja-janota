@@ -311,17 +311,26 @@
 
         <form class="contact-form">
           <div class="form-row">
-            <input type="text" placeholder="Nome" required />
-            <input type="email" placeholder="Email corporativo" required />
+            <input type="text" name="name" placeholder="Nome" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email corporativo"
+              required
+            />
           </div>
           <div class="form-row">
-            <input type="text" placeholder="Organização" />
-            <input type="text" placeholder="Assunto" />
+            <input type="text" name="organisation" placeholder="Organização" />
+            <input type="text" name="subject" placeholder="Assunto" />
           </div>
-          <textarea placeholder="Mensagem..." rows="4"></textarea>
+          <textarea
+            name="message"
+            placeholder="Mensagem..."
+            rows="4"
+          ></textarea>
 
           <label class="checkbox">
-            <input type="checkbox" required />
+            <input type="checkbox" name="consent" required />
             <span>Confirmo o tratamento confidencial deste contacto.</span>
           </label>
 
