@@ -501,6 +501,7 @@ body::before {
   }
   .areas-section__container {
     grid-template-columns: 1fr;
+    overflow: hidden;
   }
 
   .about-content .muted {
