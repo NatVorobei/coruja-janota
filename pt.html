@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coruja Janota — Engenharia e análise económica discretas</title>
+    <meta
+      name="description"
+      content="Coruja Janota — engenharia e análise económica discretas. Bragança, Portugal."
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png?v=2"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png?v=2"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png?v=2"
+    />
+    <link rel="icon" type="image/x-icon" href="/coruja-favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest?v=2" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./assets/script.js"></script>
+  </head>
+  <body>
+    <header class="frame header" id="top">
+      <div class="header__container">
+        <div class="brand">
+          <img
+            src="./assets/coruja-logo.png"
+            alt="Coruja Janota logo"
+            class="logo"
+          />
+        </div>
+        <button class="burger" id="burgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="navMenu">
+          <a class="nav__link" href="#home">Início</a>
+          <a class="nav__link" href="#about">Sobre</a>
+          <a class="nav__link" href="#areas">Áreas</a>
+          <a class="nav__link" href="#projects">Projetos</a>
+          <a class="nav__link" href="#docs">Documentação</a>
+          <a class="nav__link" href="#contact">Contacto</a>
+          <div class="lang-switch mobile">
+            <div class="selected">
+              <img src="assets/eng.svg" alt="EN" />
+              <span>EN</span>
+            </div>
+            <ul class="options">
+              <li data-lang="en">
+                <img src="assets/eng.svg" alt="EN" />
+                <span>English</span>
+              </li>
+              <li data-lang="pt">
+                <img src="assets/pt.svg" alt="PT" />
+                <span>Português</span>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="lang-switch pc">
+          <div class="selected">
+            <img src="assets/pt.svg" alt="EN" />
+            <span>PT</span>
+          </div>
+          <ul class="options">
+            <li data-lang="en">
+              <img src="assets/eng.svg" alt="EN" />
+              <span>English</span>
+            </li>
+            <li data-lang="pt">
+              <img src="assets/pt.svg" alt="PT" />
+              <span>Português</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero frame">
+        <div class="hero__container">
+          <h2 class="headline">
+            Integramos, com discrição, sustentabilidade, economia e indústria.
+          </h2>
+          <p class="lede">
+            Unimos sustentabilidade, economia e indústria — combinando
+            saber-fazer de engenharia com visão financeira para tornar as
+            inovações viáveis e preparadas para o futuro.
+          </p>
+          <div class="hero__wing--mobile">
+            <img src="./images/wing.png" />
+          </div>
+        </div>
+        <div class="hero__wing--pc">
+          <img src="./images/wing.png" />
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-grid">
+          <div class="about-media">
+            <figure class="ph-card sm">
+              <img src="./images/about-us-1.webp" />
+            </figure>
+            <figure class="ph-card lg">
+              <img src="./images/about-us-2.png" />
+            </figure>
+          </div>
+
+          <div class="about-content">
+            <h3>Sobre nós</h3>
+            <p class="about-content_text">
+              A Coruja Janota é uma empresa privada de engenharia e análise
+              económica que desenvolve soluções industriais sob medida e análise
+              com documentação ambiental auditável e integração tecnoeconómica.
+              Operamos com discrição e rigor, servindo clientes que valorizam
+              confidencialidade e valor industrial de longo prazo.
+            </p>
+            <p class="about-content_text">
+              Integrando, com discrição, sustentabilidade, economia e indústria,
+              reunimos o saber-fazer de engenharia com discernimento financeiro
+              para garantir que os produtos de base biológica e eco-inovações
+              sejam não apenas ambiental e tecnicamente sólidas, mas também
+              economicamente viáveis e estrategicamente preparadas para o
+              futuro.
+            </p>
+            <p class="muted">
+              A nossa equipa tem mais de um século de experiência cumulativa em
+              engenharia e economia.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="areas" class="areas-section">
+        <div class="areas-section__wrapper">
+          <div class="areas-section__container">
+            <div class="col">
+              <img
+                class="areas-section__image"
+                src="./images/engineering-1.png"
+              />
+              <div class="areas-section__content">
+                <h4 class="areas-section__title">Engenharia &amp; Fabrico</h4>
+                <p class="areas-section__description">
+                  Máquinas para agroalimentar e floresta.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <img
+                class="areas-section__image"
+                src="./images/modernisation.png"
+              />
+              <div class="areas-section__content">
+                <h4 class="areas-section__title">
+                  Modernização &amp; Automação
+                </h4>
+                <p class="areas-section__description">
+                  Revalorização, retrofit, robótica; equipamentos segunda vida.
+                </p>
+              </div>
+            </div>
+
+            <div class="col">
+              <img
+                class="areas-section__image"
+                src="./images/technical-docs.png"
+              />
+              <div class="areas-section__content">
+                <h4 class="areas-section__title">
+                  Documentação Técnica &amp; LCA/LCSA
+                </h4>
+                <p class="areas-section__description">
+                  Relatórios auditáveis, normas, diligência, tradução.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <img
+                class="areas-section__image"
+                src="./images/techno‑economic.png"
+              />
+              <div class="areas-section__content">
+                <h4 class="areas-section__title">
+                  Análise Tecnoeconómica &amp; Circularidade
+                </h4>
+                <p class="areas-section__description">
+                  Viabilidade, custo-benefício, estratégias de eficiência
+                  energética.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects frame section">
+        <div class="projects__wrapper">
+          <div class="projects__bg-shape">
+            <img
+              src="./images/coruja-eaarth.png"
+              alt="Earth"
+              class="projects__earth"
+            />
+          </div>
+          <div class="projects__container">
+            <h3 class="projects__title">Projetos em curso</h3>
+            <ul class="projects__list">
+              <li>
+                Linha de triagem florestal — fase de protótipo nota mediante
+                pedido
+              </li>
+              <li>
+                Retrofit de equipamentos agroalimentares e florestais — fase de
+                testes NDA
+              </li>
+              <li>
+                LCA de transformação de biomassa — fase de modelação por convite
+              </li>
+              <li>
+                ATE para bio-based e eco-inovações — fase de modelação &amp;
+                validação por convite
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="docs" class="frame section docs">
+        <div class="docs__container">
+          <h3 class="docs__title">Documentação</h3>
+          <ul class="docs__list">
+            <li>
+              LCA/LCSA sob pedido — ISO 14040/44 (quando aplicável). Resumo
+              executivo mediante pedido.
+            </li>
+            <li>Relatórios de teste &amp; avaliação — documentação sob NDA.</li>
+            <li>
+              Dossiês de conformidade &amp; SOPs — sínteses disponíveis por
+              convite.
+            </li>
+          </ul>
+        </div>
+        <div class="policies">
+          <h4 class="docs__title">Políticas &amp; Conformidade</h4>
+          <div class="policies__content">
+            <p class="muted">
+              Operamos com princípios de governação e igualdade estritos.
+            </p>
+            <p>
+              <a
+                class="policies__link"
+                href="assets/GEP_Coruja_Janota.pdf"
+                target="_blank"
+                rel="noopener"
+                >Política de Igualdade de Género (GEP)</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="contact-form-wrapper">
+        <h2 class="form-title">
+          Contacto
+          <img class="form-icon" src="./images/logo-transparent-sm.png" />
+        </h2>
+        <p class="form-subtitle">
+          Preencha o formulário abaixo e entraremos em contacto consigo em
+          breve.
+        </p>
+
+        <form class="contact-form">
+          <div class="form-row">
+            <input type="text" placeholder="Nome" required />
+            <input type="email" placeholder="Email corporativo" required />
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Organização" />
+            <input type="text" placeholder="Assunto" />
+          </div>
+          <textarea placeholder="Mensagem..." rows="4"></textarea>
+
+          <label class="checkbox">
+            <input type="checkbox" />
+            <span>Confirmo o tratamento confidencial deste contacto.</span>
+          </label>
+
+          <p>
+            Se preferir, escreva para
+            <a href="mailto:office@corujajanota.eu">office@corujajanota.eu</a>
+          </p>
+
+          <button type="submit" class="btn-send">Enviar mensagem</button>
+        </form>
+      </div>
+
+      <div class="footer__inner">
+        <p>
+          © 2025 Todos os Direitos Reservados Coruja Janota • Bragança, Portugal
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
