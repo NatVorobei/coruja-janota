@@ -416,10 +416,10 @@ body::before {
   color: var(--color-text);
 }
 .about-content .muted {
-  color: #0a47b0;
+  color: var(--color-heading);
   font-size: 40px;
   margin-top: 32px;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 @media (max-width: 767px) {
