@@ -416,7 +416,7 @@ body::before {
   color: var(--color-text);
 }
 .about-content .muted {
-  color: #3469c46b;
+  color: #0a47b0;
   font-size: 40px;
   margin-top: 32px;
   font-weight: 200;
@@ -448,9 +448,8 @@ body::before {
 }
 
 .areas-section__container {
-  display: grid;
-  grid-template-columns: 1fr;
-  /* gap: 60px; */
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 0 10px;
 }
