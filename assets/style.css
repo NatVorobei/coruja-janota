@@ -563,7 +563,6 @@ body::before {
 .projects__earth {
   width: 300px;
   height: auto;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
 }
 
 .projects__container {
@@ -778,7 +777,7 @@ textarea {
   padding: 14px 16px;
   border: 1px solid #d3e0ea;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   outline: none;
 }
 
@@ -792,7 +791,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 16px;
   color: #506580;
 }
 
@@ -840,9 +839,6 @@ textarea:focus {
 
   .form-subtitle {
     font-size: 16px;
-  }
-  .form-checkbox {
-    font-size: 14px;
   }
 }
 /* #endregion */
