@@ -84,34 +84,22 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("🔍 contact-form elements found:", forms.length);
 
   if (!forms.length) return;
+  const lang = document.documentElement.lang?.toLowerCase() || "en";
 
-  forms.forEach((form, idx) => {
+  createPopupContainer();
+
+  forms.forEach((form) => {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log("📨 form submit captured for form index:", idx);
 
-      const get = (n) =>
-        form.querySelector(`[name="${n}"]`)
-          ? form.querySelector(`[name="${n}"]`).value.trim()
-          : "";
-      const checkbox = form.querySelector('[name="consent"]');
-      const payload = {
-        name: get("name"),
-        email: get("email"),
-        organisation: get("organisation"),
-        subject: get("subject"),
-        message: get("message"),
-        consent: checkbox ? checkbox.checked : false,
-      };
+      clearErrors(form);
 
-      console.log("📦 payload:", payload);
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.consent = form.querySelector('[name="consent"]').checked;
 
-      if (!payload.name || !payload.email) {
-        console.warn("⚠️ name or email missing");
-        alert("Please fill Name and Corporate Email.");
-        return;
-      }
+      const validation = validateForm(payload, form, lang);
+      if (validation !== true) return;
 
       try {
         const res = await fetch(WORKER_URL, {
@@ -119,28 +107,113 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
+        const json = await res.json().catch(() => null);
 
-        let json = null;
-        try {
-          json = await res.json();
-        } catch (err) {
-          console.warn("response not json", err);
-        }
-
-        console.log("✅ fetch completed, status:", res.status, "body:", json);
-        if (res.ok && json && json.success) {
-          alert("✅ Message sent successfully!");
+        if (res.ok && json?.success) {
+          showPopup(getText(lang, "success"), "success");
           form.reset();
         } else if (res.ok) {
-          alert("✅ Request sent (but worker returned no success flag).");
+          showPopup(getText(lang, "sent"), "info");
           form.reset();
         } else {
-          alert("❌ Error sending message. Server status: " + res.status);
+          showPopup(getText(lang, "error") + res.status, "error");
         }
       } catch (err) {
-        console.error("❌ Network / fetch error:", err);
-        alert("Network error: " + err.message);
+        showPopup(getText(lang, "network") + err.message, "error");
       }
     });
   });
 });
+
+function validateForm(data, form, lang = "en") {
+  const t = (k) => getText(lang, k);
+  let valid = true;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  if (!data.name || data.name.length < 2) {
+    showError(form, "name", t("fillName"));
+    valid = false;
+  }
+  if (!emailRegex.test(data.email)) {
+    showError(form, "email", t("fillEmail"));
+    valid = false;
+  }
+  if (!data.message || data.message.length < 5) {
+    showError(form, "message", t("fillMessage"));
+    valid = false;
+  }
+  if (!data.consent) {
+    showError(form, "consent", t("agree"));
+    valid = false;
+  }
+
+  return valid;
+}
+
+function showError(form, fieldName, message) {
+  const field = form.querySelector(`[name="${fieldName}"]`);
+  if (!field) return;
+  field.classList.add("input-error");
+
+  let msg = document.createElement("div");
+  msg.className = "error-msg";
+  msg.textContent = message;
+  field.insertAdjacentElement("afterend", msg);
+}
+
+function clearErrors(form) {
+  form.querySelectorAll(".error-msg").forEach((el) => el.remove());
+  form
+    .querySelectorAll(".input-error")
+    .forEach((el) => el.classList.remove("input-error"));
+}
+
+function getText(lang, key) {
+  const texts = {
+    en: {
+      fillName: "Please enter your name (at least 2 characters).",
+      fillEmail: "Please enter a valid corporate email.",
+      fillMessage: "Please write a short message.",
+      agree: "Please confirm confidential handling of this request.",
+      success: "✅ Message sent successfully!",
+      sent: "✅ Request sent (but worker returned no success flag).",
+      error: "❌ Error sending message. Server status: ",
+      network: "Network error: ",
+    },
+    pt: {
+      fillName: "Por favor, insira o seu nome (mínimo 2 caracteres).",
+      fillEmail: "Por favor, insira um email corporativo válido.",
+      fillMessage: "Por favor, escreva uma breve mensagem.",
+      agree: "Por favor, confirme o tratamento confidencial deste pedido.",
+      success: "✅ Mensagem enviada com sucesso!",
+      sent: "✅ Pedido enviado (mas o servidor não retornou sucesso).",
+      error: "❌ Erro ao enviar a mensagem. Código do servidor: ",
+      network: "Erro de rede: ",
+    },
+  };
+  return texts[lang.startsWith("pt") ? "pt" : "en"][key];
+}
+
+function createPopupContainer() {
+  const container = document.createElement("div");
+  container.className = "popup-container";
+  document.body.appendChild(container);
+}
+
+function showPopup(message, type = "info") {
+  const container = document.querySelector(".popup-container");
+  if (!container) return;
+
+  const popup = document.createElement("div");
+  popup.className = `popup popup-${type}`;
+  popup.textContent = message;
+
+  container.appendChild(popup);
+  setTimeout(() => popup.classList.add("show"), 10);
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+    setTimeout(() => popup.remove(), 300);
+  }, 4000);
+}
