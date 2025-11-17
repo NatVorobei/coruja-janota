@@ -317,7 +317,7 @@ body::before {
 .lede {
   font-size: 20px;
   max-width: 600px;
-  color: #49496d;
+  color: var(--color-text);
 }
 
 @media (max-width: 1024px) {
@@ -730,6 +730,7 @@ body::before {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   color: #0b2442;
   z-index: 6;
+  width: 95%;
 }
 
 .form-title {
@@ -761,6 +762,7 @@ body::before {
 .form-row {
   display: flex;
   gap: 20px;
+  position: relative;
 }
 
 .form-row input {
@@ -819,14 +821,13 @@ textarea:focus {
   transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .footer {
     padding-top: 560px;
   }
   .contact-form-wrapper {
     top: -120px;
     padding: 25px;
-    width: 95%;
   }
 
   .form-row {
@@ -842,13 +843,25 @@ textarea:focus {
     font-size: 16px;
   }
 }
+
+@media (min-width: 767px) {
+  .form-row:first-child .error-msg {
+    position: absolute;
+    bottom: -18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-form-wrapper {
+    width: 100%;
+  }
+}
 /* #endregion */
 
 /* #region Popup */
 .error-msg {
   color: #d62828;
   font-size: 13px;
-  margin-top: 4px;
   text-align: left;
 }
 
@@ -894,5 +907,4 @@ textarea:focus {
 .popup-info {
   background-color: #457b9d;
 }
-
 /* #endregion */
